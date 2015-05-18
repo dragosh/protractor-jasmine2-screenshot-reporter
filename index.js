@@ -88,14 +88,13 @@ function Jasmine2ScreenShotReporter(opts) {
     var hasValidSpecs = function (suite) {
       var validSuites = false;
       var validSpecs = false;
-      var suites = suite._suites || [];
-      if (suites.length) {
+      if (suite._suites && suite.suites.length) {
         validSuites = _.any(suites, function(s) {
           return hasValidSpecs(s);
         });
       }
 
-      if (suites.length) {
+      if (suite._suites && suite.suites.length) {
         validSpecs = _.any(suites, function(s) {
           return isSpecValid(s);
         });
